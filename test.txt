@@ -11,3 +11,4 @@ developブランチからtestブランチを切ってみた。
 
 Test Message
 
+sugiyama
