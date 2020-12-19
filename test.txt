@@ -9,6 +9,10 @@ developブランチからtestブランチを切ってみた。
 
 吉田編集
 
+
 Test Message
 
 sugiyama
+
+初めてvi使ったよ　byでぇすけ
+
