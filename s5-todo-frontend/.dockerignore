@@ -1,0 +1,5 @@
+# node_modulesはホストマシンに同期しない。
+# コンテナ作成時にローカル環境内にnode_modulesという空のフォルダが自動作成され、コンテナ内の同じフォルダの内容を同期しなくなる。
+node_modules
+.git
+.gitignore
