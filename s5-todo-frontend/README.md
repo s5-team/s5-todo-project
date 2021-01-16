@@ -1,22 +1,22 @@
 # s5-todo-frontend Vue CLIをdocker上で動作させる方法
 
-## Dockerfileからdockerイメージをビルド
+## 1. Dockerfileからdockerイメージをビルド
 `docker-compose build vue-app`
 
-## docker-composeをデタッチモードで実行
+## 2. docker-composeをデタッチモードで実行
 `docker-compose up -d`
 
-## 全コンテナのプロセスを確認。`vuecli3`コンテナが起動していることを確認。
+## 3. 全コンテナのプロセスを確認。`vuecli3`コンテナが起動していることを確認。
 1. `docker ps -a`を実行
 2. `NAMES`が`vuecli3`であるコンテナの`STATUS`が`UP`になっていること
 
-## `vuecli3`コンテナにアタッチ
+## 4. `vuecli3`コンテナにアタッチ
 `docker exec -it vuecli3 sh`
 
-## Vueサーバーの起動
+## 5. Vueサーバーの起動
 `npm run serve`
 
-## 動作確認
+## 6. 動作確認
 `http://localhost:8080`へアクセス。(localhostの部分は環境によって変化する）
 
 ### 参考資料
