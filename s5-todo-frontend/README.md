@@ -11,7 +11,7 @@
 2. `NAMES`が`vuecli3`であるコンテナの`STATUS`が`UP`になっていること
 
 ## 4. `vuecli3`コンテナにアタッチ
-`docker exec -it vuecli3 sh`
+`docker exec -it vuecli3 sh`  
 ※Git for Windowsの場合`winpty docker exec -it vuecli3 sh`
 
 ## 5. Vueサーバーの起動
