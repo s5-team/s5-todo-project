@@ -1,30 +1,20 @@
-# docker-composeのバージョンを指定
 version: '3.7'
 
 volumes:
-  # node_moduleを入れるvolume
-  # volumeマウントすることで、バイナリファイルなどのOS依存するファイルをdocker Engine上で管理する。
   vue_cli_node_volume:
 
 services:
   vue-app:
-    # image: vuecli:1
-    build:
-      # Dockerfileのパス
+     build:
       context: .
       dockerfile: Dockerfile
     container_name: vuecli3
     ports:
       - 8080:8080
     volumes:
-      # ホストのカレントディレクトリとコンテナ内の指定ディレクトリをバインドマウント
       - .:/app/
-      # node_moduleをボリュームマウント
-      - vue_cli_node_volume:/app/node_modules
+     - vue_cli_node_volume:/app/node_modules
 
-    # -itオプション。コンテナ内のOSとbash(sh)を通じてコマンド入力する場合に必要。
-    # コンテナ起動時のオプション(-iに相当）。標準入力を許可する。
     stdin_open: true
-    # コンテナ起動時のオプション(-tに相当)。疑似ターミナルを起動。
     tty: true
     command: /bin/sh
