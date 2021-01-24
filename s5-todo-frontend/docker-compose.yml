@@ -5,7 +5,7 @@ volumes:
 
 services:
   vue-app:
-     build:
+    build:
       context: .
       dockerfile: Dockerfile
     container_name: vuecli3
@@ -13,7 +13,7 @@ services:
       - 8080:8080
     volumes:
       - .:/app/
-     - vue_cli_node_volume:/app/node_modules
+      - vue_cli_node_volume:/app/node_modules
 
     stdin_open: true
     tty: true
