@@ -12,6 +12,7 @@
 
 ## 4. `vuecli3`コンテナにアタッチ
 `docker exec -it vuecli3 sh`
+※Git for Windowsの場合`winpty docker exec -it vuecli3 sh`
 
 ## 5. Vueサーバーの起動
 `npm run serve`
