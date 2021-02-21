@@ -1,0 +1,43 @@
+# dockercomposeのバージョン
+version: '3'
+
+volumes:
+  mysql_data_volume:
+
+services:
+  # MySQL
+    mysql:
+      image: mysql:5.7
+      container_name: mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: s5-todo_db
+        MYSQL_USER: s5
+        MYSQL_PASSWORD: s5
+        TZ: 'Asia/Tokyo'
+      volumes:
+        # DBをいじると/var/lib/mysql内にデータが溜まって、それを/docker/db/data内のデータに紐付けているので、今回は不要（毎回コンテナ起動時にDBがリセットされているようにする）
+        - mysql_data_volume:/var/lib/mysql
+        # 設定ファイルの共有
+        - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+        # 初期テーブルを作成するのに使うsqlディレクトリのマウント
+        # - ./docker/db/sql:/docker-entrypoint-initdb.d
+      ports:
+        - 3306:3306
+      # collationは照合順序のこと。つまり簡単にいうと並び替えの方法を決めたもの（しょた）
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+    #phpMyAdmin
+    phpmyadmin:
+      container_name: phpmyadmin
+      # タグ(x.x)を指定せずにlatestを拾ってくる
+      image: phpmyadmin/phpmyadmin
+      environment:
+        # 1:サーバはローカル以外を指定できるようになる
+        - PMA_ARBITRARY=1
+        # ホストにするコンテナの名前を指定
+        - PMA_HOSTS=mysql
+        - PMA_USER=root
+        - PMA_PASSWORD=root
+      ports:
+        - 8081:80
